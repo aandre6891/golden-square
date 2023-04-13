@@ -7,4 +7,4 @@ def check_grammar(text)
   else
     return false
   end
-end 
+end  
