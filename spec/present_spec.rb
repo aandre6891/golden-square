@@ -7,7 +7,7 @@ RSpec.describe Present do
 		expect(present.unwrap).to eq(10)
 	end
 
-		it "fails if we unwrap without unwrapping first " do
+		it "fails if we unwrap without wrapping first " do
 			present = Present.new
 			expect { present.unwrap }.to raise_error "No contents have been wrapped."
 		end
