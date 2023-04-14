@@ -32,7 +32,7 @@ string_checker_todo("#") => false V
 string_checker_todo("#TO") => false V
 string_checker_todo("#todo") => false  V
 string_checker_todo("hello, this is the first #todo") => false 
-string_checker_todo(1) => fail "you haven't given a string" V
+string_checker_todo(1) => fail "you haven't given a string"
 
 ```
 
