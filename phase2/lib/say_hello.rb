@@ -1,5 +1,5 @@
 def say_hello(name)
-  return "hello #(name)"
+  return "hello #{name}"
 end
 
 # Intended output:
