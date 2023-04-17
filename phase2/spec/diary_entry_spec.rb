@@ -59,8 +59,24 @@ RSpec.describe "diary entry class" do
 
   it "returns the next chunk, next time we are asked" do
     diary_entry = DiaryEntry.new("my_title", "one two three")
-      diary_entry.reading_chunk(2, 1)
-      chunk = diary_entry.reading_chunk(2, 1)
-      expect(chunk).to eq "three"
+    diary_entry.reading_chunk(2, 1)
+    chunk = diary_entry.reading_chunk(2, 1)
+    expect(chunk).to eq "three"
+  end
+
+  it "restarts after reading the whole contents" do
+    diary_entry = DiaryEntry.new("my_title", "one two three")
+    diary_entry.reading_chunk(2, 1)
+    diary_entry.reading_chunk(2, 1)
+    chunk = diary_entry.reading_chunk(2, 1)
+    expect(chunk).to eq "one two"
+  end
+
+  it "restarts if it finishes exactly on the end" do
+    diary_entry = DiaryEntry.new("my_title", "one two three")
+    diary_entry.reading_chunk(2, 1)
+    diary_entry.reading_chunk(1, 1)
+    chunk = diary_entry.reading_chunk(2, 1)
+    expect(chunk).to eq "one two"
   end
 end
