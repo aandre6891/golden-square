@@ -38,4 +38,22 @@ RSpec.describe "diary entry class" do
       expect { diary_entry.reading_time(0) }.to raise_error "Reading speed must be above zero"
     end
   end
+
+  describe "#reading_chunk" do
+    context "with a text readable within the given minutes" do
+      it "returns the full contents" do
+        diary_entry = DiaryEntry.new("my_title", "one two three")
+        chunk = diary_entry.reading_chunk(200, 1)
+        expect(chunk).to eq "one two three"
+      end
+    end
+  end
+
+  context "with a contents unreadable within the time" do
+    it "returns a readable chung" do
+      diary_entry = DiaryEntry.new("my_title", "one two three")
+      chunk = diary_entry.reading_chunk(2, 1)
+      expect(chunk).to eq "one two"
+    end
+  end
 end
