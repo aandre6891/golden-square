@@ -23,6 +23,7 @@ class DiaryEntry
   end
 
   def reading_chunk(wpm, minutes) 
+    fail "Reading speed must be above zero" if wpm == 0
     no_words_we_can_read = wpm * minutes
     start_from = @furthest_word_read
     end_at = @furthest_word_read + no_words_we_can_read
