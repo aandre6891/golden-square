@@ -50,10 +50,17 @@ RSpec.describe "diary entry class" do
   end
 
   context "with a contents unreadable within the time" do
-    it "returns a readable chung" do
+    it "returns a readable chunk" do
       diary_entry = DiaryEntry.new("my_title", "one two three")
       chunk = diary_entry.reading_chunk(2, 1)
       expect(chunk).to eq "one two"
     end
+  end
+
+  it "returns the next chunk, next time we are asked" do
+    diary_entry = DiaryEntry.new("my_title", "one two three")
+      diary_entry.reading_chunk(2, 1)
+      chunk = diary_entry.reading_chunk(2, 1)
+      expect(chunk).to eq "three"
   end
 end
