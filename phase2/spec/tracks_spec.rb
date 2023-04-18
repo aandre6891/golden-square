@@ -2,22 +2,22 @@ require "tracks"
 
 RSpec.describe TrackList do
   context "trying to show an empty list" do
-    xit "fails" do
+    it "fails" do
       track_list = TrackList.new
       expect{ track_list.list }.to raise_error "the list is empty"
     end
   end
 
   context "adding a new track to the list and then showing the list" do
-    xit "returns the list with one track" do
+    it "returns the list with one track" do
       track_list = TrackList.new
       track_list.add("Uptown Funk")
       expect(track_list.list).to eq ["Uptown Funk"]
     end
   end
 
-  context "adding a new track to the list and then showing the list" do
-    xit "returns the list with one track" do
+  context "adding two new tracks to the list and then showing the list" do
+    it "returns the list with two tracks" do
       track_list = TrackList.new
       track_list.add("Uptown Funk")
       track_list.add("Paradise City")
