@@ -11,7 +11,7 @@ class MusicLibrary
     return @tracks
   end
   
-  def search_by_title(keyword) # keyword is a string
-    # Returns a list of tracks with titles that include the keyword
+  def search_by_title(keyword)
+
   end
 end
