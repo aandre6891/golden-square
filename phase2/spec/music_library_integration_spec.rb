@@ -1,4 +1,5 @@
 require "music_library"
+require "track"
 
 RSpec.describe "integration" do
   context "when we add a track to the library" do
@@ -9,4 +10,6 @@ RSpec.describe "integration" do
       expect(music_library.all).to eq [track]
     end
   end
+
+  
 end
