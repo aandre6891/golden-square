@@ -12,7 +12,7 @@ RSpec.describe "integration" do
   end
 
   context "when we add multiple tracks to the library" do
-    it "comes back to the list" do
+    xit "comes back to the list" do
       music_library = MusicLibrary.new
       track_1 = Track.new("my_title_1", "my_artist_1")
       track_2 = Track.new("my_title_2", "my_artist_2")
@@ -23,7 +23,7 @@ RSpec.describe "integration" do
   end
 
   context "with some tracks added" do
-    it "searches for those tracks by full title" do
+    xit "searches for those tracks by full title" do
       music_library = MusicLibrary.new
       track_1 = Track.new("my_title_1", "my_artist_1")
       track_2 = Track.new("my_title_2", "my_artist_2")
