@@ -1,8 +1,8 @@
 require "music_library"
 
-RSpec.describe MusicLibrary do
-  context "when we add a track" do
-    it "adds that track to the library" do
+RSpec.describe "integration" do
+  context "when we add a track to the library" do
+    it "comes back to the list" do
       music_library = MusicLibrary.new
       track = Track.new("my_title", "my_artist")
       music_library.add(track)
