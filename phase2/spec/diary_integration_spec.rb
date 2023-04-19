@@ -1,7 +1,7 @@
 #file: diary_integration_spec.rb
 
 require 'diary'
-require 'diary_entry'
+require 'diary_entry2'
 
 RSpec.describe "Dairy Integration" do
     it'adds diary entries and retrives them' do
