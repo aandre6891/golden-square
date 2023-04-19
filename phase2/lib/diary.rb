@@ -4,12 +4,11 @@ class Diary
 		@entries = []
   end
   
-  def add(entry) # entry is an instance of DiaryEntry
-      @entries << entry
+  def add(entry)
+    @entries << entry
   end
   
   def all
-      # Returns a list of instances of DiaryEntry
     @entries
   end
   
@@ -17,10 +16,9 @@ class Diary
 	  return @entries.sum(&:count_words)
 	end
   
-  def reading_time(wpm) # wpm is an integer representing
-                          # the number of words the user can read per minute
-      # Returns an integer representing an estimate of the reading time in minutes
-      # if the user were to read all entries in the diary.
+  def reading_time(wpm) 
+    fail "WPM must be positive" unless wpm.positive?
+    return (count_words / wpm.to_f).ceil
   end
   
   def find_best_entry_for_reading_time(wpm, minutes)
