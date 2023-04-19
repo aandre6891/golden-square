@@ -5,14 +5,14 @@ class Track
   end
 
   def title
-    @title
+    return @title
   end
 
   def artist
-    @artist
+    return @artist
   end
 
   def format
-    # Returns a string of the form "TITLE by ARTIST"
+    return @title + " by " + @artist
   end
 end
