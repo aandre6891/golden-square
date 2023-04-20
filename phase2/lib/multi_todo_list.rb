@@ -12,7 +12,9 @@ class TodoList
   end
 
   def complete
-    # Returns all complete todos
+    @todo_list.select do |todo|
+      todo if todo.instance_variable_get(:@done)
+    end
   end
 
   def give_up!
