@@ -13,10 +13,6 @@ class Todo
   end
 
   def done?
-    if @done == true
-      return true
-    else
-      return false
-    end
+    @done
   end
 end
