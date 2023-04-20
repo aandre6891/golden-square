@@ -28,7 +28,7 @@ RSpec.describe "integration" do
     end
   end
 
-  it "returns a list of incomomplete taks" do
+  it "returns a list of incomplete taks" do
       todo_list = TodoList.new
       todo_1 = Todo.new("Wash the car")
       todo_2 = Todo.new("Go to the market")
@@ -42,7 +42,7 @@ RSpec.describe "integration" do
   end  
 
   context "when we #give_up!" do
-    xit "returns the list with all the complete task" do
+    it "returns the list with all the complete task" do
       todo_list = TodoList.new
       todo_1 = Todo.new("Wash the car")
       todo_2 = Todo.new("Go to the market")
@@ -51,10 +51,10 @@ RSpec.describe "integration" do
       todo_list.add(todo_2)
       todo_list.add(todo_3)
       todo_list.give_up!
-      expect(todo_list.complete).eq to [todo_1, todo_2, todo_3]
+      expect(todo_list.complete).to eq [todo_1, todo_2, todo_3]
     end
 
-    xit "returns an empty incomplete list" do
+    it "returns an empty incomplete list" do
       todo_list = TodoList.new
       todo_1 = Todo.new("Wash the car")
       todo_2 = Todo.new("Go to the market")
@@ -63,7 +63,7 @@ RSpec.describe "integration" do
       todo_list.add(todo_2)
       todo_list.add(todo_3)
       todo_list.give_up!
-      expect(todo_list.incomplete).eq to []   
+      expect(todo_list.incomplete).to eq []   
     end   
   end
 end

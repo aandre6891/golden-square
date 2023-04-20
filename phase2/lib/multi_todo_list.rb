@@ -9,18 +9,20 @@ class TodoList
 
   def incomplete
     @todo_list.select do |todo|
-      todo if !todo.instance_variable_get(:@done)
+      todo.done? == false
     end
   end
 
   def complete
     @todo_list.select do |todo|
-      todo if todo.instance_variable_get(:@done)
+      todo.done? == true
     end
   end
 
   def give_up!
-    # Marks all todos as complete
+    @todo_list.each do |todo|
+      todo.mark_done!
+    end
   end
 end
 
