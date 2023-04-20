@@ -3,8 +3,8 @@ class TodoList
     @todo_list = []
   end
 
-  def add(todo) # todo is an instance of Todo
-    # Returns nothing
+  def add(todo)
+    @todo_list << todo
   end
 
   def incomplete
