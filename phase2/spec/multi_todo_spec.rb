@@ -9,4 +9,24 @@ RSpec.describe Todo do
       end
     end
   end
+
+  describe "#mark_done!" do
+    context "given a task" do
+      it "sets the variable @done as true" do
+        todo = Todo.new("Wash the car.")
+        todo.mark_done!
+        expect(todo.instance_variable_get(:@done)).to eq true
+      end
+    end
+  end
+
+  describe "#done?" do
+    context "when you do a task" do
+      it "returns true" do
+        todo = Todo.new("Wash the car.")
+        todo.mark_done!
+        expect(todo.done?).to eq true
+      end
+    end
+  end
 end
