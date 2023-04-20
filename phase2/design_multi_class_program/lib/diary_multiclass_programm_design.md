@@ -123,6 +123,10 @@ combinations that reflect the ways in which the system will be used._
 # > So that I can keep track of my tasks
 # > I want to keep a todo list along with my diary
 
+# > As a user
+# > So that I can keep track of my contacts
+# > I want to see a list of all of the mobile phone numbers in all my diary entries
+
 # 1
 diary = Diary.new
 diary_entry_1 = DiaryEntry.new("Book", "I read a book yesterday")
@@ -185,9 +189,6 @@ task_list.add(task_1)
 task_list.add(task_2)
 expect(task_list.all).to eq [task_1, task_2] 
 
-> As a user
-> So that I can keep track of my contacts
-> I want to see a list of all of the mobile phone numbers in all my diary entries
 
 # 8
 diary = Diary.new
@@ -204,7 +205,7 @@ expect(result)).to eq ["123456789", "987654321", "918273645"]
 
 ```ruby
 
-# empty diary
+# later
 
 ```
 
