@@ -20,13 +20,26 @@ RSpec.describe MusicLibrary do
   end
   
   describe "#search" do
-    it "returns track_1 since it matches the title_1" do
+    it "returns track_1 since it matches the keyword" do
       music_library = MusicLibrary.new
-      track_1 = double :FakeTrack, title: "title_1", artist: "artist_1"
-      track_2 = double :FakeTrack, title: "title_2", artist: "artist_2"
+      track_1 = double :FakeTrack, matches?: true
+      track_2 = double :FakeTrack, matches?: false
       music_library.add(track_1)
       music_library.add(track_2)
-      expect(music_library.search("title_1")).to eq (track_1)
+      expect(music_library.search("title_1")).to eq [track_1]
+    end
+
+    it "returns a list of tracks since more tracks match the keyword" do
+      music_library = MusicLibrary.new
+      track_1 = double :FakeTrack, matches?: true
+      track_2 = double :FakeTrack, matches?: false
+      track_3 = double :FakeTrack, matches?: false
+      track_4 = double :FakeTrack, matches?: true
+      music_library.add(track_1)
+      music_library.add(track_2)
+      music_library.add(track_3)
+      music_library.add(track_4)
+      expect(music_library.search("title_1")).to eq [track_1, track_4]
     end
   end
 end
