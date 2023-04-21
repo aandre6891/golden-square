@@ -16,7 +16,7 @@ RSpec.describe "diary integration" do
 
   describe "#diary_rading behaviour" do
     context "when there is a entry that fits exactly the given time" do
-      xit "returns that entry" do
+      it "returns that entry" do
         diary = Diary.new
         diary_reader = DiaryReader.new(2, diary)
         diary_entry_1 = DiaryEntry.new("title1", "one")
