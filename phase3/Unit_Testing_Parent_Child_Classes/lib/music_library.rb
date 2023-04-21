@@ -15,6 +15,6 @@ class MusicLibrary
     # Returns a list of tracks that match the keyword
     return @music_library.select do |track| 
       track.matches?(keyword)
-    end
+    end.uniq
   end
 end
