@@ -1,13 +1,14 @@
 class DiaryEntry
   def initialize(title, contents)
-  
+    @title = title
+    @contents = contents
   end
 
   def title
-    # returns the title of the entry
+    return @title
   end
 
   def contents
-    # returns the content of the entry 
+    return @contents
   end
 end

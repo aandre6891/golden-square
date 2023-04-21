@@ -1,7 +1,7 @@
 require "diary"
 require "diary_entry"
 
-RSpec.describe Diary do
+RSpec.describe "diary integration" do
   context "given more DiaryEntries" do
     it "returns the list of entries of the Diary" do
       diary = Diary.new
@@ -13,20 +13,23 @@ RSpec.describe Diary do
     end
   end
 
-# # 2 - when it fits exactly the given time
-# diary = Diary.new
-# diary_reader = DiaryReader.new(2, diary)
-# diary_entry_1 = DiaryEntry.new("title1", "one")
-# diary_entry_2 = DiaryEntry.new("title2", "one two")
-# diary_entry_3 = DiaryEntry.new("title3", "one two three")
-# diary_entry_4 = DiaryEntry.new("title4", "one two three four")
-# diary_entry_5 = DiaryEntry.new("title5", "one two three four five")
-# diary.add(diary_entry_1)
-# diary.add(diary_entry_2)
-# diary.add(diary_entry_3) 
-# diary.add(diary_entry_4)
-# diary.add(diary_entry_5)
-# expect(diary_reader.find_most_readable_in_time(2)).to eq diary_entry_4
+  context "when there is a entry that fits exactly the given time" do
+    it "returns that entry" do
+      diary = Diary.new
+      diary_reader = DiaryReader.new(2, diary)
+      diary_entry_1 = DiaryEntry.new("title1", "one")
+      diary_entry_2 = DiaryEntry.new("title2", "one two")
+      diary_entry_3 = DiaryEntry.new("title3", "one two three")
+      diary_entry_4 = DiaryEntry.new("title4", "one two three four")
+      diary_entry_5 = DiaryEntry.new("title5", "one two three four five")
+      diary.add(diary_entry_1)
+      diary.add(diary_entry_2)
+      diary.add(diary_entry_3) 
+      diary.add(diary_entry_4)
+      diary.add(diary_entry_5)
+      expect(diary_reader.find_most_readable_in_time(2)).to eq diary_entry_4
+  end
+end
 
 # # 3 - when it does not fit exactly the given time
 # diary = Diary.new
