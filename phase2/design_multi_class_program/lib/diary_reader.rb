@@ -20,6 +20,7 @@ class DiaryReader
   end
 
   def count_words(entry)
+    return 0 if entry.contents.empty?
     return word_count = entry.contents.split(' ').length
   end
 end
