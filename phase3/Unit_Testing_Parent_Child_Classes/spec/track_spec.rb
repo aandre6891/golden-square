@@ -27,5 +27,15 @@ RSpec.describe Track do
       track = Track.new("Africa", "Toto")
       expect(track.matches?("Hold the line")).to eq false
     end
+
+    it "returns true since the keyword is included in the title" do
+      track = Track.new("Everything has changed", "Toto")
+      expect(track.matches?("Everything")).to eq true
+    end
+    
+    it "returns true since the keyword is included in the artist name" do
+      track = Track.new("Everything has changed", "Ed Sheeran")
+      expect(track.matches?("Sheeran")).to eq true
+    end
   end
 end
