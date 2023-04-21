@@ -82,27 +82,22 @@ RSpec.describe "diary integration" do
       diary = Diary.new
       phone_book = PhoneNumberCrawler.new(diary)
       diary_entry_0 = DiaryEntry.new("title0", "my friend is cool")
-      diary_entry_1 = DiaryEntry.new("title1", "my friend's number is 123456789")
-      diary_entry_2 = DiaryEntry.new("title2", "my friend's numbers are 123456789, 987654321. 918273645 and 918273645")
+      diary_entry_1 = DiaryEntry.new("title1", "my friend's number is 07800000000")
+      diary_entry_2 = DiaryEntry.new("title2", "my friend's numbers are 07800000000, 07800000001. 07800000002 and 07800000002")
       diary.add(diary_entry_0)
       diary.add(diary_entry_1)
       diary.add(diary_entry_2)
       result = phone_book.extract_numbers
-      expect(result).to eq ["123456789", "987654321", "918273645"]
+      expect(result).to eq ["07800000000", "07800000001", "07800000002"]
     end
-  end
-  
-    xit "doesn't extract invalid numbers"
+    
+    it "doesn't extract invalid numbers" do
       diary = Diary.new
       phone_book = PhoneNumberCrawler.new(diary)
-      diary_entry_3 = DiaryEntry.new("title3", "")
+      diary_entry_3 = DiaryEntry.new("title3", "my friend's number is 0780000000, 10780000000, 07800001")
       diary.add(diary_entry_3)
+      result = phone_book.extract_numbers
+      expect(result).to eq []
+    end
+  end
 end
-
-# # 7
-# task_list = TaskList.new
-# task_1 = Task.new("walk the dog")
-# task_2 = Task.new("eat the food")
-# task_list.add(task_1)
-# task_list.add(task_2)
-# expect(task_list.all).to eq [task_1, task_2] 
