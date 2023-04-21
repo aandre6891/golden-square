@@ -5,7 +5,8 @@ class DiaryReader
   end
 
   def find_most_readable_in_time(time)
-   return readable_entries(time ).max_by do |entry| 
+    fail "wpm should be positive" if !@wpm.positive?
+   return readable_entries(time).max_by do |entry| 
     count_words(entry)
    end
   end

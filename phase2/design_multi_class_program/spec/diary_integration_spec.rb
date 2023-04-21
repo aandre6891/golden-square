@@ -32,32 +32,49 @@ RSpec.describe "diary integration" do
         expect(diary_reader.find_most_readable_in_time(2)).to eq diary_entry_4
       end
     end
+    
+    context "when there is a entry that doesn't fit exactly the given time" do
+      it "returns that entry" do    
+        diary = Diary.new
+        diary_reader = DiaryReader.new(2, diary)
+        diary_entry_1 = DiaryEntry.new("title1", "one")
+        diary_entry_2 = DiaryEntry.new("title2", "one two")
+        diary_entry_3 = DiaryEntry.new("title3", "one two three")
+        diary_entry_4 = DiaryEntry.new("title4", "one two three four five")
+        diary.add(diary_entry_1)
+        diary.add(diary_entry_2)
+        diary.add(diary_entry_3)  
+        diary.add(diary_entry_4)
+        expect(diary_reader.find_most_readable_in_time(2)).to eq diary_entry_3
+      end
+    end
   end
 
-# # 3 - when it does not fit exactly the given time
-# diary = Diary.new
-# diary_reader = DiaryReader.new(2, diary)
-# diary_entry_1 = DiaryEntry.new("title1", "one")
-# diary_entry_2 = DiaryEntry.new("title2", "one two")
-# diary_entry_3 = DiaryEntry.new("title3", "one two three")
-# diary_entry_4 = DiaryEntry.new("title4", "one two three four five")
-# diary.add(diary_entry_1)
-# diary.add(diary_entry_2)
-# diary.add(diary_entry_3)  
-# diary.add(diary_entry_4)
-# expect(diary_reader.find_most_readable_in_time(2)).to eq diary_entry_3
+    context "when there is nothing readable in the given time" do
+      it "returns nil" do
+        diary = Diary.new
+        diary_reader = DiaryReader.new(2, diary)
+        diary_entry_1 = DiaryEntry.new("title1", "one two three four five")
+        diary.add(diary_entry_1)
+        expect(diary_reader.find_most_readable_in_time(2)).to eq nil
+      end
+    end
 
-# # 4 - when there is nothing readable in the given time
-# diary = Diary.new
-# diary_reader = DiaryReader.new(2, diary)
-# diary_entry_1 = DiaryEntry.new("title1", "one two three four five")
-# diary.add(diary_entry_4 )
-# expect(diary_reader.find_most_readable_in_time(2)).to eq nil
-
-# # 5 - nothing to read at all
-# diary = Diary.new
-# diary_reader = DiaryReader.new(0, diary)
-# expect { diary_reader.find_most_readable_in_time(2) }.to raise_error "wpm should be positive"
+    context "when there is nothing at all in the Diary" do
+      it "should return nil" do
+        diary = Diary.new
+        diary_reader = DiaryReader.new(2, diary)
+        expect(diary_reader.find_most_readable_in_time(2)).to eq nil
+      end
+    end
+    
+    context "when wpm is not valid" do
+      it "should fail" do
+        diary = Diary.new
+        diary_reader = DiaryReader.new(0, diary)
+        expect { diary_reader.find_most_readable_in_time(2) }.to raise_error "wpm should be positive"
+      end
+    end
 
 # # 6 - wpm is zero
 # diary = Diary.new
