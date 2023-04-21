@@ -7,23 +7,25 @@ RSpec.describe Track do
     expect(track.artist).to eq "artist1"
   end
     
-  it "returns true since the keyword matches the title" do
-    track = Track.new("Africa", "Toto")
-    expect(track.matches?("Africa")).to eq true
-  end
+  describe "#matches?" do
+    it "returns true since the keyword matches the title" do
+      track = Track.new("Africa", "Toto")
+      expect(track.matches?("Africa")).to eq true
+    end
 
-  it "returns true since the keyword matches the artist" do
-    track = Track.new("Africa", "Toto")
-    expect(track.matches?("Toto")).to eq true
-  end
+    it "returns true since the keyword matches the artist" do
+      track = Track.new("Africa", "Toto")
+      expect(track.matches?("Toto")).to eq true
+    end
 
-  it "returns true since the keyword matches both title & artist" do
-    track = Track.new("Toto", "Toto")
-    expect(track.matches?("Toto")).to eq true
-  end
+    it "returns true since the keyword matches both title & artist" do
+      track = Track.new("Toto", "Toto")
+      expect(track.matches?("Toto")).to eq true
+    end
 
-  it "returns true since the keyword doesn't match either title nor artist" do
-    track = Track.new("Africa", "Toto")
-    expect(track.matches?("Hold the line")).to eq false
+    it "returns true since the keyword doesn't match either title nor artist" do
+      track = Track.new("Africa", "Toto")
+      expect(track.matches?("Hold the line")).to eq false
+    end
   end
 end
