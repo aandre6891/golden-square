@@ -15,10 +15,6 @@ class Track
   end
 
   def matches?(keyword)
-    if keyword == @artist || keyword == @title
-      return true
-    else
-      return false
-    end
+   return keyword == @artist || keyword == @title
   end
 end
