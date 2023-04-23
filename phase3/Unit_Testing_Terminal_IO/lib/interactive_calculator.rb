@@ -17,10 +17,16 @@ class InteractiveCalculator
   def run
     @terminal.puts "Hello. I will subtract two numbers."  
     @terminal.puts "Please enter a number"
-    number_1 = @terminal.gets.chomp.to_i
+    number_1 = get_number
     @terminal.puts "Please enter another number"
-    number_2 = @terminal.gets.chomp.to_i
+    number_2 = get_number
     @terminal.puts "Here is your result: " 
     @terminal.puts "#{number_1} - #{number_2} = #{number_1 - number_2}"
+  end
+  
+  def get_number
+    response = @terminal.gets
+    fail "Not a valid number" unless response.to_i.to_s == response
+    return response.to_i
   end
 end
