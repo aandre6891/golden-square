@@ -21,4 +21,21 @@ RSpec.describe "tasks integration" do
     task_2.mark_complete
     expect(task_list.all_complete?).to eq true
   end
+
+  context "when the task is completed" do
+    it "it returns the task with the tick" do
+      task = Task.new("wash the car")
+      task_formatter = TaskFormatter.new(task)
+      task.mark_complete
+      expect(task_formatter.format).to eq("- [x] wash the car")
+    end
+  end
+
+  context "when the task is not complete" do
+    it "it returns the task without the tick" do
+      task = Task.new("wash the car")
+      task_formatter = TaskFormatter.new(task)
+      expect(task_formatter.format).to eq("- [ ] wash the car")
+    end
+  end
 end

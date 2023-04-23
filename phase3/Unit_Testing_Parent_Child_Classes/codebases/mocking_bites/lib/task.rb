@@ -7,7 +7,7 @@ class Task
   def title
     return @title
   end
-
+ 
   def mark_complete
     @complete = true
   end

@@ -1,5 +1,6 @@
 class TaskFormatter
   def initialize(task) # task is an instance of Task
+    @task = task
   end
 
   def format
@@ -8,5 +9,10 @@ class TaskFormatter
     # - [ ] Task title
     # If the task is complete, the format is:
     # - [x] Task title
+    if @task.complete? == true
+      return "- [x] #{@task.title}"
+    else
+      return "- [ ] #{@task.title }"
+    end
   end
 end
